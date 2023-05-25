@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a5e22c1e9aa27409a28230afbdff02, type: 3}
+  m_Name: 2_huntress
+  m_EditorClassIdentifier: 
+  miscellaneousList: []
+  primaryList:
+  - {fileID: 21300000, guid: 6ff06c17ad9ee2b4db360ecc51a81a30, type: 3}
+  - {fileID: 21300000, guid: 682fcf5cf049b5f4883764736f4610b0, type: 3}
+  secondaryList:
+  - {fileID: 21300000, guid: 1d7804407d7d09441ac704c314352dbb, type: 3}
+  utilityList:
+  - {fileID: 21300000, guid: 7091e8997b87df2419c8f3d6836aa2bd, type: 3}
+  - {fileID: 21300000, guid: 212be6aaf80db7b409f3c4597eda0543, type: 3}
+  specialList:
+  - {fileID: 21300000, guid: 84de2c75ec6747c41b26cc1f38afa330, type: 3}
+  - {fileID: 21300000, guid: 0d4c501e97a86094fad79a1d30ac6f84, type: 3}
