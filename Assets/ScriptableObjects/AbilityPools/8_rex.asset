@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a5e22c1e9aa27409a28230afbdff02, type: 3}
+  m_Name: 8_rex
+  m_EditorClassIdentifier: 
+  miscellaneousList: []
+  primaryList:
+  - {fileID: 21300000, guid: 03025820596ce9f40967d2e82fdee501, type: 3}
+  secondaryList:
+  - {fileID: 21300000, guid: 80cf5699faee411418edf91e4b1d0a55, type: 3}
+  - {fileID: 21300000, guid: dd72f977cbb64974794a356f7419ee31, type: 3}
+  utilityList:
+  - {fileID: 21300000, guid: 5c4be134fca5b064a8fb46a4c9d3bad5, type: 3}
+  - {fileID: 21300000, guid: ad02bf80c13ccd24f9616acfac03d423, type: 3}
+  specialList:
+  - {fileID: 21300000, guid: a2aac0a17608bed408f46e632b7ad595, type: 3}
+  - {fileID: 21300000, guid: 630918549f4accc49ac31821af0b8f99, type: 3}

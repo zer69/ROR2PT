@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04e50aa00b5caf84682e4c98192bc677, type: 3}
+  m_Name: 6_artificer
+  m_EditorClassIdentifier: 
+  name: Artificer
+  sprite: {fileID: 21300000, guid: 44c3894b003ed54499af88fd7d4c6403, type: 3}
+  abilityPool: {fileID: 11400000, guid: b753738286f8be44ab669255f77b4587, type: 2}

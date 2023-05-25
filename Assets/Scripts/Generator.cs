@@ -8,11 +8,15 @@ public class Generator : MonoBehaviour
 {
     [SerializeField] private CharacterPool characterPool;
     [SerializeField] private GameObject abilityPrefab;
+    [SerializeField] private LoadoutBase loadoutBase;
+    [SerializeField] private LoadoutMono loadoutContainer;
+
 
     private Transform character;
     private Transform abilities;
     private int characterId;
     private string loadoutId;
+
 
     private void Start()
     {
@@ -22,13 +26,21 @@ public class Generator : MonoBehaviour
 
 
     }
+    private void Update()
+    {
+        Generate();
+    }
 
     public void Generate()
     {
         loadoutId = "";
         RandomizeCharacter();
         RandomizeAbilities();
-        transform.GetChild(0).GetComponent<Loadout>().id = loadoutId;
+        if (loadoutBase.loadoutTable.ContainsKey(loadoutId))
+            loadoutContainer.loadout = (Loadout)loadoutBase.loadoutTable[loadoutId];
+        else
+            loadoutContainer.loadout = new Loadout(loadoutId);
+        //loadoutBase.AddLoadout(loadoutContainer.loadout);
         
     }
 
@@ -78,10 +90,18 @@ public class Generator : MonoBehaviour
         tmpAbility.GetComponent<Image>().sprite = abilityPool.utilityList[abilityIndex];
         loadoutId += abilityPool.utilityList[abilityIndex].name;
 
+        if (characterId == 10)
+        {
+            abilityIndex = Random.Range(0, abilityPool.specialList.Count);
+            tmpAbility = Instantiate(abilityPrefab, abilities);
+            tmpAbility.GetComponent<Image>().sprite = abilityPool.specialList[abilityIndex];
+            loadoutId += abilityPool.specialList[abilityIndex].name;
+        }
         abilityIndex = Random.Range(0, abilityPool.specialList.Count);
         tmpAbility = Instantiate(abilityPrefab, abilities);
         tmpAbility.GetComponent<Image>().sprite = abilityPool.specialList[abilityIndex];
         loadoutId += abilityPool.specialList[abilityIndex].name;
+
 
 
     }

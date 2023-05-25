@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Record : MonoBehaviour
+public class Record
 {
     public bool dnf;
-    public float time;
-    public string deathSource;
+    public string time;
+
+    public Record()
+    {
+
+    }
+
+    public Record(string _time, bool _dnf)
+    {
+        dnf = _dnf;
+        time = _time;
+    }
 
 }
