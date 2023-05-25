@@ -28,7 +28,7 @@ public class Generator : MonoBehaviour
     }
     private void Update()
     {
-        Generate();
+        //Generate();
     }
 
     public void Generate()

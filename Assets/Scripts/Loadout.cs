@@ -5,11 +5,11 @@ using UnityEngine;
 public class Loadout
 {
     public string id;
-    public List<Record> recordList;
     public string winRate = "N/A";
     public string bestTime = "N/A";
     public string averageTime = "N/A";
-    
+    public List<Record> recordList;
+
 
     public Loadout()
     {
