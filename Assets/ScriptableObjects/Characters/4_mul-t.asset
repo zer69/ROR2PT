@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04e50aa00b5caf84682e4c98192bc677, type: 3}
-  m_Name: 3_bandit
+  m_Name: 4_mul-t
   m_EditorClassIdentifier: 
-  name: Bandit
-  sprite: {fileID: 21300000, guid: 5dc1f1492c8c825428625e59d7e2fc47, type: 3}
-  abilityPool: {fileID: 11400000, guid: 047b4ed5273845f4abe2c65ba85cc892, type: 2}
+  name: MUL-T
+  sprite: {fileID: 21300000, guid: 89e977ebfb8c20845ad5b28c2fe3f696, type: 3}
+  abilityPool: {fileID: 11400000, guid: 0bcf0486ae2ae5a49ad9731a81e74ae0, type: 2}

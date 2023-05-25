@@ -56,6 +56,13 @@ public class Generator : MonoBehaviour
             loadoutId += abilityPool.miscellaneousList[abilityIndex].name;
         }
 
+        if (characterId == 3)
+        {
+            abilityIndex = Random.Range(0, abilityPool.primaryList.Count);
+            tmpAbility = Instantiate(abilityPrefab, abilities);
+            tmpAbility.GetComponent<Image>().sprite = abilityPool.primaryList[abilityIndex];
+            loadoutId += abilityPool.primaryList[abilityIndex].name;
+        }
         abilityIndex = Random.Range(0, abilityPool.primaryList.Count);
         tmpAbility = Instantiate(abilityPrefab, abilities);
         tmpAbility.GetComponent<Image>().sprite = abilityPool.primaryList[abilityIndex];
