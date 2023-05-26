@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 using System;
 using System.IO;
@@ -33,7 +34,8 @@ public class FileDataHandler
                     }
                 }
 
-                loadedData = JsonUtility.FromJson<ClientData>(dataToLoad);
+                //loadedData = JsonUtility.FromJson<ClientData>(dataToLoad);
+                loadedData = JsonConvert.DeserializeObject<ClientData>(dataToLoad);
 
             }
             catch (Exception e)
@@ -54,7 +56,8 @@ public class FileDataHandler
 
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
-            string dataToStore = JsonUtility.ToJson(data, true);
+            //string dataToStore = JsonUtility.ToJson(data, true);
+            string dataToStore = JsonConvert.SerializeObject(data, Formatting.Indented);
 
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
             {

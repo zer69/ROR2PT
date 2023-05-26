@@ -5,10 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class ClientData
 {
-    public SerializableDictionary<string, Loadout> loadoutDataBase;
+    public Dictionary<string, Loadout> loadoutDataBase;
 
     public ClientData()
     {
-        this.loadoutDataBase = new SerializableDictionary<string, Loadout>();
+        this.loadoutDataBase = new Dictionary<string, Loadout>();
     }
 }

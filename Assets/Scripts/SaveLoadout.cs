@@ -24,7 +24,7 @@ public class SaveLoadout : MonoBehaviour
         loadout.loadout.UpdateBestTime();
         loadout.loadout.UpdateWinRate();
         dataBase.AddLoadout(loadout.loadout);
-        loadout.loadout.PrintLoadout();
+        //loadout.loadout.PrintLoadout();
     }
 
     private bool ValidateTime()

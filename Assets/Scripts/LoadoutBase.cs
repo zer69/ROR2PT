@@ -26,6 +26,6 @@ public class LoadoutBase : MonoBehaviour, IDataPersistence
 
     public void SaveData(ref ClientData data)
     {
-        data.loadoutDataBase = (SerializableDictionary<string, Loadout>)this.loadoutTable;
+        data.loadoutDataBase = this.loadoutTable;
     }
 }

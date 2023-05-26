@@ -28,9 +28,16 @@ public class Loadout
         foreach(Record record in recordList)
         {
             if (record.dnf == false)
+            {
                 if (ParseRecord(record) < minTime)
-                    bestTime = record.time;
+                {
+                    minTime = ParseRecord(record);
+                }
+                    
+            }
+               
         }
+        bestTime = UnParseRecord(minTime);
     }
 
     private int ParseRecord(Record record)
@@ -41,7 +48,7 @@ public class Loadout
 
     private string UnParseRecord(int seconds)
     {
-        return (seconds / 60).ToString() + ":" + (seconds % 60).ToString();
+        return (seconds / 60).ToString() + ":" + ((seconds % 60) == 0 ? "00" : (seconds % 60).ToString());
     }
 
     public void UpdateAverageTime()
