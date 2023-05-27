@@ -8,6 +8,7 @@ public class Loadout
     public string winRate = "N/A";
     public string bestTime = "N/A";
     public string averageTime = "N/A";
+    public string winStreak = "0";
     public List<Record> recordList;
 
 
@@ -37,10 +38,15 @@ public class Loadout
             }
                
         }
+        if (minTime == int.MaxValue)
+        {
+            bestTime = "N/A";
+            return;
+        }
         bestTime = UnParseRecord(minTime);
     }
 
-    private int ParseRecord(Record record)
+    public int ParseRecord(Record record)
     {
         string[] splitTime = record.time.Split(':');
         return int.Parse(splitTime[0]) * 60 + int.Parse(splitTime[1]);
@@ -49,6 +55,30 @@ public class Loadout
     private string UnParseRecord(int seconds)
     {
         return (seconds / 60).ToString() + ":" + ((seconds % 60) == 0 ? "00" : (seconds % 60).ToString());
+    }
+
+    public int MaxTime()
+    {
+        int maxTime = int.MinValue;
+        foreach (Record record in recordList)
+        {
+            if (maxTime < ParseRecord(record))
+                maxTime = ParseRecord(record);
+        }
+
+        return maxTime;
+    }
+
+    public int MinTime()
+    {
+        int minTime = int.MaxValue;
+        foreach (Record record in recordList)
+        {
+            if (minTime > ParseRecord(record))
+                minTime = ParseRecord(record);
+        }
+
+        return minTime;
     }
 
     public void UpdateAverageTime()
@@ -78,6 +108,20 @@ public class Loadout
         }
         winRate = wins.ToString() + "/" + recordList.Count.ToString();
     }
+
+    public void UpdateWinStreak()
+    {
+        int winStreaktmp = 0;
+        foreach (Record record in recordList)
+        {
+            if (record.dnf)
+                winStreaktmp = 0;
+            else
+                winStreaktmp++;
+        }
+        winStreak = winStreaktmp.ToString();
+    }
+
 
     public void PrintLoadout()
     {

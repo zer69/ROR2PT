@@ -11,6 +11,7 @@ public class SaveLoadout : MonoBehaviour
     public LoadoutMono loadout;
 
     public LoadoutBase dataBase;
+    
 
     public void SaveNewRecord()
     {
@@ -23,6 +24,9 @@ public class SaveLoadout : MonoBehaviour
         loadout.loadout.UpdateAverageTime();
         loadout.loadout.UpdateBestTime();
         loadout.loadout.UpdateWinRate();
+        loadout.loadout.UpdateWinStreak();
+        
+        loadout.UpdateStats();
         dataBase.AddLoadout(loadout.loadout);
         //loadout.loadout.PrintLoadout();
     }

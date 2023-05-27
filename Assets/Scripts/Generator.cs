@@ -10,6 +10,7 @@ public class Generator : MonoBehaviour
     [SerializeField] private GameObject abilityPrefab;
     [SerializeField] private LoadoutBase loadoutBase;
     [SerializeField] private LoadoutMono loadoutContainer;
+    public Graph graph;
 
 
     private Transform character;
@@ -40,8 +41,9 @@ public class Generator : MonoBehaviour
             loadoutContainer.loadout = (Loadout)loadoutBase.loadoutTable[loadoutId];
         else
             loadoutContainer.loadout = new Loadout(loadoutId);
-        //loadoutBase.AddLoadout(loadoutContainer.loadout);
-        
+        graph.ShowGraph(loadoutContainer.loadout);
+        loadoutContainer.UpdateStats();
+
     }
 
     private void RandomizeCharacter()
