@@ -21,8 +21,11 @@ public class Generator : MonoBehaviour
 
     private void Start()
     {
-        character = transform.GetChild(0).GetChild(0);
-        abilities = transform.GetChild(0).GetChild(1);
+        //character = transform.GetChild(0).GetChild(0);
+        //abilities = transform.GetChild(0).GetChild(1);
+
+        character = transform.GetChild(1).GetChild(0).GetChild(0);
+        abilities = transform.GetChild(1).GetChild(0).GetChild(1);
         Generate();
 
 
