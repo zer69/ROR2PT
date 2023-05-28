@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class SaveLoadout : MonoBehaviour
 {
@@ -11,7 +12,36 @@ public class SaveLoadout : MonoBehaviour
     public LoadoutMono loadout;
 
     public LoadoutBase dataBase;
-    
+    public bool canSave = true;
+
+    [SerializeField] private PlayerInput playerInput;
+
+    IEnumerator SaveCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        canSave = true;
+        yield return null;
+    }
+
+    private void Start()
+    {
+        playerInput.onActionTriggered += OnPlayerInputActionTriggered;
+    }
+
+    private void OnPlayerInputActionTriggered(InputAction.CallbackContext context)
+    {
+        switch (context.action.name)
+        {
+            case "Save":
+                if (canSave)
+                {
+                    SaveNewRecord();
+                    canSave = false;
+                    StartCoroutine(SaveCooldown());
+                }
+                break;
+        }
+    }
 
     public void SaveNewRecord()
     {

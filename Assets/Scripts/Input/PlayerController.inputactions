@@ -1,0 +1,34 @@
+{
+    "name": "PlayerController",
+    "maps": [
+        {
+            "name": "Main",
+            "id": "ccbade9c-34d6-4b5a-9f49-02bd1a201231",
+            "actions": [
+                {
+                    "name": "Save",
+                    "type": "Button",
+                    "id": "2012c285-5fd1-4905-a53b-6e7fac80a8bc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6a288db3-530f-439b-a336-26c271286c0c",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Save",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -7,18 +7,20 @@ using CodeMonkey.Utils;
 public class Graph : MonoBehaviour
 {
     [SerializeField] private Sprite dotSprite;
-    private RectTransform graphContainer;
+    [SerializeField] private RectTransform graphContainer;
     public float dotSize;
     private float newDotSize;
+    private float tmpdeltax;
     
     public List<Color> colorList;
 
     private void Awake()
     {
-        graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
+        //graphContainer = transform.Find("graphContainer").GetComponent<RectTransform>();
         colorList[0] = new Color(colorList[0].r, colorList[0].g, colorList[0].b, 1f);
         colorList[1] = new Color(colorList[1].r, colorList[1].g, colorList[1].b, 1f);
         newDotSize = dotSize;
+        tmpdeltax = graphContainer.sizeDelta.x;
     }
 
     private GameObject CreateDotVisual(Vector2 anchoredPosition, bool dnf)
@@ -40,14 +42,16 @@ public class Graph : MonoBehaviour
 
     public void ShowGraph(Loadout loadout)
     {
+        
+        graphContainer.sizeDelta = new Vector2(tmpdeltax + 10f * loadout.recordList.Count, graphContainer.sizeDelta.y);
         foreach (Transform child in graphContainer)
         {
             GameObject.Destroy(child.gameObject);
         }
         if (loadout.recordList.Count == 0)
             return;
-        
-        
+
+
 
         
         float graphHeight = graphContainer.sizeDelta.y - newDotSize;
@@ -66,6 +70,8 @@ public class Graph : MonoBehaviour
             }
             lastDotGameObject = dotVisualGameObject;
         }
+
+
         foreach(Transform child in graphContainer)
         {
             if (child.gameObject.name == "dotConnection")
@@ -77,7 +83,7 @@ public class Graph : MonoBehaviour
     {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
-        gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.5f);
+        gameObject.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.9f);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         Vector2 dir = (dotPositionB - dotPositionA).normalized;
         float distance = Vector2.Distance(dotPositionA, dotPositionB);
