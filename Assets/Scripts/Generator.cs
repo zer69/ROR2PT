@@ -18,6 +18,10 @@ public class Generator : MonoBehaviour
     private int characterId;
     private string loadoutId;
 
+    private bool characterLocked = false;
+
+    private List<int> abilityList = new List<int>() {-1, -1, -1, -1, -1, -1, -1}; // misc, primary, primary, secondary, utility, special, special
+    [SerializeField]private List<bool> lockedAbilities = new List<bool>() { false, false, false, false, false, false, false };
 
     private void Start()
     {
@@ -51,7 +55,8 @@ public class Generator : MonoBehaviour
 
     private void RandomizeCharacter()
     {
-        characterId = Random.Range(0, characterPool.characterList.Count);
+        if (!characterLocked)
+            characterId = Random.Range(0, characterPool.characterList.Count);
         character.GetChild(0).GetComponent<Image>().sprite = characterPool.characterList[characterId].sprite;
         character.GetChild(1).GetComponent<TMP_Text>().text = characterPool.characterList[characterId].name;
         loadoutId += characterPool.characterList[characterId].name;
@@ -63,51 +68,78 @@ public class Generator : MonoBehaviour
             GameObject.Destroy(ability.gameObject);
         GameObject tmpAbility;
         AbilityPool abilityPool = characterPool.characterList[characterId].abilityPool;
-        int abilityIndex;
+       
 
         if (abilityPool.miscellaneousList.Count > 0)
         {
-            abilityIndex = Random.Range(0, abilityPool.miscellaneousList.Count);
+            if (!lockedAbilities[0])
+                abilityList[0] = Random.Range(0, abilityPool.miscellaneousList.Count);
             tmpAbility = Instantiate(abilityPrefab, abilities);
-            tmpAbility.GetComponent<Image>().sprite = abilityPool.miscellaneousList[abilityIndex];
-            loadoutId += abilityPool.miscellaneousList[abilityIndex].name;
+            tmpAbility.GetComponent<Image>().sprite = abilityPool.miscellaneousList[abilityList[0]];
+            tmpAbility.GetComponent<Ability>().abilitySlot = 0;
+            loadoutId += abilityPool.miscellaneousList[abilityList[0]].name;
         }
+        if (!lockedAbilities[1])
+            abilityList[1] = Random.Range(0, abilityPool.primaryList.Count);
+        tmpAbility = Instantiate(abilityPrefab, abilities);
+        tmpAbility.GetComponent<Image>().sprite = abilityPool.primaryList[abilityList[1]];
+        tmpAbility.GetComponent<Ability>().abilitySlot = 1;
+        loadoutId += abilityPool.primaryList[abilityList[1]].name;
 
         if (characterId == 3)
         {
-            abilityIndex = Random.Range(0, abilityPool.primaryList.Count);
+            if (!lockedAbilities[2])
+                abilityList[2] = Random.Range(0, abilityPool.primaryList.Count);
             tmpAbility = Instantiate(abilityPrefab, abilities);
-            tmpAbility.GetComponent<Image>().sprite = abilityPool.primaryList[abilityIndex];
-            loadoutId += abilityPool.primaryList[abilityIndex].name;
+            tmpAbility.GetComponent<Image>().sprite = abilityPool.primaryList[abilityList[2]];
+            tmpAbility.GetComponent<Ability>().abilitySlot = 2;
+            loadoutId += abilityPool.primaryList[abilityList[2]].name;
         }
-        abilityIndex = Random.Range(0, abilityPool.primaryList.Count);
-        tmpAbility = Instantiate(abilityPrefab, abilities);
-        tmpAbility.GetComponent<Image>().sprite = abilityPool.primaryList[abilityIndex];
-        loadoutId += abilityPool.primaryList[abilityIndex].name;
 
-        abilityIndex = Random.Range(0, abilityPool.secondaryList.Count);
+        if (!lockedAbilities[3])
+            abilityList[3] = Random.Range(0, abilityPool.secondaryList.Count);
         tmpAbility = Instantiate(abilityPrefab, abilities);
-        tmpAbility.GetComponent<Image>().sprite = abilityPool.secondaryList[abilityIndex];
-        loadoutId += abilityPool.secondaryList[abilityIndex].name;
+        tmpAbility.GetComponent<Image>().sprite = abilityPool.secondaryList[abilityList[3]];
+        tmpAbility.GetComponent<Ability>().abilitySlot = 3;
+        loadoutId += abilityPool.secondaryList[abilityList[3]].name;
 
-        abilityIndex = Random.Range(0, abilityPool.utilityList.Count);
+        if (!lockedAbilities[4])
+            abilityList[4] = Random.Range(0, abilityPool.utilityList.Count);
         tmpAbility = Instantiate(abilityPrefab, abilities);
-        tmpAbility.GetComponent<Image>().sprite = abilityPool.utilityList[abilityIndex];
-        loadoutId += abilityPool.utilityList[abilityIndex].name;
+        tmpAbility.GetComponent<Image>().sprite = abilityPool.utilityList[abilityList[4]];
+        tmpAbility.GetComponent<Ability>().abilitySlot = 4;
+        loadoutId += abilityPool.utilityList[abilityList[4]].name;
+
+
+        if (!lockedAbilities[5])
+            abilityList[5] = Random.Range(0, abilityPool.specialList.Count);
+        tmpAbility = Instantiate(abilityPrefab, abilities);
+        tmpAbility.GetComponent<Image>().sprite = abilityPool.specialList[abilityList[5]];
+        tmpAbility.GetComponent<Ability>().abilitySlot = 5;
+        loadoutId += abilityPool.specialList[abilityList[5]].name;
 
         if (characterId == 10)
         {
-            abilityIndex = Random.Range(0, abilityPool.specialList.Count);
+            if (!lockedAbilities[6])
+                abilityList[6] = Random.Range(0, abilityPool.specialList.Count);
             tmpAbility = Instantiate(abilityPrefab, abilities);
-            tmpAbility.GetComponent<Image>().sprite = abilityPool.specialList[abilityIndex];
-            loadoutId += abilityPool.specialList[abilityIndex].name;
+            tmpAbility.GetComponent<Image>().sprite = abilityPool.specialList[abilityList[6]];
+            tmpAbility.GetComponent<Ability>().abilitySlot = 6;
+            loadoutId += abilityPool.specialList[abilityList[6]].name;
         }
-        abilityIndex = Random.Range(0, abilityPool.specialList.Count);
-        tmpAbility = Instantiate(abilityPrefab, abilities);
-        tmpAbility.GetComponent<Image>().sprite = abilityPool.specialList[abilityIndex];
-        loadoutId += abilityPool.specialList[abilityIndex].name;
+        
 
 
 
+    }
+
+    public void LockCharacter(bool state)
+    {
+        characterLocked = state;
+    }
+
+    public void LockAbilities(bool state, int slot)
+    {
+        lockedAbilities[slot] = state;
     }
 }
