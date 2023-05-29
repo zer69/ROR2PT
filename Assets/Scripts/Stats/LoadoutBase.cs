@@ -15,7 +15,7 @@ public class LoadoutBase : MonoBehaviour, IDataPersistence
         }
         else
         {
-            loadoutTable.Add(loadout.id, new Loadout(loadout.id));
+            loadoutTable.Add(loadout.id, loadout);
         }
     }
 

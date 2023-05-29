@@ -9,9 +9,11 @@ public class Loadout
     public string bestTime = "N/A";
     public string averageTime = "N/A";
     public string winStreak = "0";
-    public List<Record> recordList;
+    public List<Record> recordList = new List<Record>();
 
 
+    
+    
     public Loadout()
     {
 

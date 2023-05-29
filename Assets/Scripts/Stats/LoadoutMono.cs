@@ -20,4 +20,15 @@ public class LoadoutMono: MonoBehaviour
         winStreak.text = loadout.winStreak;
         graph.ShowGraph(loadout);
     }
+
+    public void PrintLoadout()
+    {
+        Debug.Log(loadout.id);
+        Debug.Log(loadout.winRate);
+        Debug.Log(loadout.bestTime);
+        Debug.Log(loadout.averageTime);
+        Debug.Log(loadout.winStreak);
+        foreach (Record record in loadout.recordList)
+            Debug.Log(record.time + " " + record.dnf);
+    }
 }

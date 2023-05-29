@@ -7,7 +7,9 @@ public class DataPersistenceManager: MonoBehaviour
 {
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
+    [SerializeField] private string bufferFile;
     [SerializeField] private bool useEncryption;
+    [SerializeField] private bool useBuffer;
 
     private ClientData clientData;
     private List<IDataPersistence> dataPersistenceObjects;
@@ -26,7 +28,10 @@ public class DataPersistenceManager: MonoBehaviour
 
     private void Start()
     {
-        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+        if (!useBuffer)
+            this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
+        else
+            this.dataHandler = new FileDataHandler(Application.persistentDataPath, bufferFile, useEncryption);
         this.dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadClient();
     }

@@ -49,7 +49,7 @@ public class SaveLoadout : MonoBehaviour
         {
             Debug.LogError("Time not valid!");
             return;
-        }    
+        }
         loadout.loadout.recordList.Add(new Record(runTime.text, dnf.isOn));
         loadout.loadout.UpdateAverageTime();
         loadout.loadout.UpdateBestTime();
