@@ -39,6 +39,11 @@ public class Generator : MonoBehaviour
         //Generate();
     }
 
+    public bool getAbilityLockStatus(int abilitySlot)
+    {
+        return lockedAbilities[abilitySlot];
+    }
+
     public void Generate()
     {
         loadoutId = "";

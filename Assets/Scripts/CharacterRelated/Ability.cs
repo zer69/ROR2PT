@@ -19,9 +19,14 @@ public class Ability : MonoBehaviour
         
     }
 
-    private void Update()
+    public void SetAbilityLocked()
     {
         generator.LockAbilities(lockAbility.isOn, abilitySlot);
+    }
+
+    private void Update()
+    {
+        //generator.LockAbilities(lockAbility.isOn, abilitySlot);
     }
 
     
