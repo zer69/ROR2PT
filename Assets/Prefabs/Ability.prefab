@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 6473826891362202309}
   - component: {fileID: 73321064721592671}
   - component: {fileID: 6143470107131557940}
+  - component: {fileID: 551857059702539174}
   m_Layer: 0
   m_Name: LockCharacter
   m_TagString: Untagged
@@ -195,7 +196,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 73321064721592671}
-  toggleTransition: 1
+  toggleTransition: 0
   graphic: {fileID: 8273196364715447174}
   m_Group: {fileID: 0}
   onValueChanged:
@@ -214,6 +215,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!114 &551857059702539174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441438849840680555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d5080d9436aa94f9ddd587fb86eee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4604240323737423300
 GameObject:
   m_ObjectHideFlags: 0

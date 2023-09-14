@@ -10,6 +10,7 @@ public class Generator : MonoBehaviour
     [SerializeField] private GameObject abilityPrefab;
     [SerializeField] private LoadoutBase loadoutBase;
     [SerializeField] private LoadoutMono loadoutContainer;
+    [SerializeField] private GameObject startButton;
     public Graph graph;
 
 
@@ -30,8 +31,8 @@ public class Generator : MonoBehaviour
 
         character = transform.GetChild(1).GetChild(0).GetChild(0);
         abilities = transform.GetChild(1).GetChild(0).GetChild(1);
-        Generate();
-
+        //Generate();
+        startButton.SetActive(true);
 
     }
     private void Update()
@@ -50,9 +51,9 @@ public class Generator : MonoBehaviour
         RandomizeCharacter();
         RandomizeAbilities();
         if (loadoutBase.loadoutTable.ContainsKey(loadoutId))
-            loadoutContainer.loadout = (Loadout)loadoutBase.loadoutTable[loadoutId];
+        { loadoutContainer.loadout = (Loadout)loadoutBase.loadoutTable[loadoutId]; Debug.Log("ligmaOld"); }
         else
-            loadoutContainer.loadout = new Loadout(loadoutId);
+        { loadoutContainer.loadout = new Loadout(loadoutId); Debug.Log("ligmaNew"); }
         graph.ShowGraph(loadoutContainer.loadout);
         loadoutContainer.UpdateStats();
 
@@ -61,7 +62,7 @@ public class Generator : MonoBehaviour
     private void RandomizeCharacter()
     {
         if (!characterLocked)
-            characterId = Random.Range(0, characterPool.characterList.Count);
+            characterId = Random.Range(10, characterPool.characterList.Count);
         character.GetChild(0).GetComponent<Image>().sprite = characterPool.characterList[characterId].sprite;
         character.GetChild(1).GetComponent<TMP_Text>().text = characterPool.characterList[characterId].name;
         loadoutId += characterPool.characterList[characterId].name;
